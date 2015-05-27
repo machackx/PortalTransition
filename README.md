@@ -4,9 +4,13 @@
 
 Inspired by Apple's keynote portal animation, it is an iOS implementation of Portal like UIViewController transition.
 
-Portrait: [![](http://img.ceyang.me/portrait.gif)](http://img.ceyang.me/portrait.gif)
+Portrait: 
 
-Landscape: [![](http://img.ceyang.me/landscape.gif)](http://img.ceyang.me/landscape.gif)
+[![](http://img.ceyang.me/portrait.gif)](http://img.ceyang.me/portrait.gif)
+
+Landscape: 
+
+[![](http://img.ceyang.me/landscape.gif)](http://img.ceyang.me/landscape.gif)
 
 ## Requirements
 
@@ -53,6 +57,42 @@ self.viewControllerTransitionDelegate.viewController = newVC;
 // Just call the custom present method
 [self presentPortalTransitionViewController:newVC completion:nil];
 
+```
 
+### Push a UIViewController in your UINavigationController's viewcontroller stack
+
+#### Set a viewControllerTransitionDelegate
+```objective-c
+#import "CYNavigationControllerDelegate.h"
+
+@interface ViewController ()
+
+@property (nonatomic, strong) CYNavigationControllerDelegate *navDelegate;
+
+@end
+
+
+// Instatiate transitionDelegate
+self.navDelegate = [CYNavigationControllerDelegate new];
+
+NewViewController *newVC = [NewViewController new];
+// Set your navigation controller to your navDelegate
+self.navDelegate.navController = self.navigationController;
+[self presentViewController:newVC animated:YES completion:nil];
 
 ```
+#### Use custom category method
+
+```objective-c
+#import "UINavigationController+PortalTransition.h""
+
+// Just call the custom present method
+[self.navigationController pushPortalTransitionViewController:vc completion:nil];
+
+```
+
+
+## TODO
+
+* Implemente interactive transition for pop & dismiss view controller
+* Cocoapods
