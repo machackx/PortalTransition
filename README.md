@@ -23,11 +23,11 @@ Dependencies:
 
 ## Usage
 
-### Copy PortalTransition folder to your project
+#### Copy PortalTransition folder to your project
 
 ### Present a UIViewController
 
-#### Set a viewControllerTransitionDelegate
+Set a viewControllerTransitionDelegate
 ```objective-c
 #import "CYViewControllerTransitioningDelegate.h"
 
@@ -49,7 +49,7 @@ self.viewControllerTransitionDelegate.viewController = newVC;
 [self presentViewController:newVC animated:YES completion:nil];
 
 ```
-#### Use custom category methods
+Use custom category methods
 
 ```objective-c
 #import "UIViewController+PortalTransition.h"
@@ -59,9 +59,9 @@ self.viewControllerTransitionDelegate.viewController = newVC;
 
 ```
 
-### Push a UIViewController in your UINavigationController's viewcontroller stack
+Push a UIViewController to your UINavigationController's viewcontroller stack
 
-#### Set a viewControllerTransitionDelegate
+Set a viewControllerTransitionDelegate
 ```objective-c
 #import "CYNavigationControllerDelegate.h"
 
@@ -81,7 +81,7 @@ self.navDelegate.navController = self.navigationController;
 [self presentViewController:newVC animated:YES completion:nil];
 
 ```
-#### Use custom category method
+Use custom category method
 
 ```objective-c
 #import "UINavigationController+PortalTransition.h""
@@ -91,8 +91,52 @@ self.navDelegate.navController = self.navigationController;
 
 ```
 
+## Custom animator parameters configuration
+```objective-c
+/**
+*  Gap between the target view and reflection, default is 8.0
+*/
+@property (nonatomic, assign) CGFloat reflectionGap;
+
+
+/**
+*  ReflectionHeight / targetViewHeight, default is 0.5
+*/
+@property (nonatomic, assign) CGFloat reflectionScale;
+
+/**
+*  Opacity of reflectionView, default is 0.5
+*/
+@property (nonatomic, assign) CGFloat reflectionAlpha;
+
+/**
+*  Target view size / origin view size, default is 0.5
+*/
+@property (nonatomic, assign) CGFloat targetViewScale;
+
+/**
+*  Portal animation duration, default is 2.0
+*/
+@property (nonatomic, assign) CGFloat portalAnimationDuration;
+
+/**
+*  Animation duration, default is 3.O
+*/
+@property (nonatomic, assign) CGFloat scaleAnimationDuration;
+
+/**
+*  Target view scale animation delay after portal animation, default is 0.5
+*/
+@property (nonatomic, assign) CGFloat delay;
+
+/**
+*  UIViewController Transition Style, support UINavigationViewController Push, UIViewController present
+*/
+@property (nonatomic, assign) CYPortalTransitionStyle portalTransitionStyle;
+```
 
 ## TODO
 
 * Implemente interactive transition for pop & dismiss view controller
 * Cocoapods
+* Unit Test

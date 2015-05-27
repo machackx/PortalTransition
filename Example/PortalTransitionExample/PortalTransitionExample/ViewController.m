@@ -35,9 +35,9 @@
     NewViewController *newVC = [NewViewController new];
     newVC.modalPresentationStyle = UIModalPresentationCustom;
     self.viewControllerTransitionDelegate.viewController = newVC;
-    [self presentViewController:newVC animated:YES completion:nil];
+    //[self presentViewController:newVC animated:YES completion:nil];
     //Or you can call this catogory method
-    //[self presentPortalTransitionViewController:newVC completion:nil];
+    [self presentPortalTransitionViewController:newVC completion:nil];
 }
 
 @end

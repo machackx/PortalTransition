@@ -170,19 +170,12 @@
         
         reflectionView.frame = CGRectMake(0, fromViewSize.height + _reflectionGap, fromViewSize.width, fromViewSize.height/2);
         
-        switch (_portalTransitionStyle) {
-            case CYPortalTransitionStylePresent: {
-                [fromViewController presentViewController:toViewController animated:NO completion:nil];
-                break;
-            }
-            case CYPortalTransitionStylePush:{
-                NSMutableArray *currentViewControllerStack =  [NSMutableArray arrayWithArray:fromViewController.navigationController.viewControllers];
-                [currentViewControllerStack addObject:toViewController];
-                fromViewController.navigationController.viewControllers  = currentViewControllerStack;
-                break;
-            }
-            default:
-                break;
+        if (_portalTransitionStyle == CYPortalTransitionStylePush) {
+            // Push view controller to navigation view controller stack
+            // In animation block so that nav bar will take final state into consideration thus create a smooth animation
+            NSMutableArray *currentViewControllerStack =  [NSMutableArray arrayWithArray:fromViewController.navigationController.viewControllers];
+            [currentViewControllerStack addObject:toViewController];
+            fromViewController.navigationController.viewControllers  = currentViewControllerStack;
         }
         
     } completion:^(BOOL finished) {
@@ -190,8 +183,12 @@
         [leftImageView removeFromSuperview];
         [rightImageView removeFromSuperview];
         [reflectionView removeFromSuperview];
-        
         fromView.hidden = NO;
+        
+        if (_portalTransitionStyle == CYPortalTransitionStylePresent) {
+            // Call native presentViewController to apply the view hierachy change
+            [fromViewController presentViewController:toViewController animated:NO completion:nil];
+        }
         
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];

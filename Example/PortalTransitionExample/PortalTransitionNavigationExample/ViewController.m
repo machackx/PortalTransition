@@ -37,8 +37,8 @@
     aImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [vc.view addSubview:aImageView];
     //Or you can call this custom category method
-    //[self.navigationController pushPortalTransitionViewController:vc completion:nil];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushPortalTransitionViewController:vc completion:nil];
+    //[self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
