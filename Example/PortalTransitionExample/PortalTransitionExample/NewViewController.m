@@ -14,7 +14,7 @@
     [super viewDidLoad];
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    imageView.image = [UIImage imageNamed:@"3.png"];
+    imageView.image = [UIImage imageNamed:@"3.jpg"];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:imageView];
     

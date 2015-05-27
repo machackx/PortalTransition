@@ -33,10 +33,10 @@
 - (IBAction)portalPushVC:(id)sender {
     UIViewController *vc = [UIViewController new];
     UIImageView *aImageView = [[UIImageView alloc] initWithFrame:vc.view.bounds];
-    aImageView.image = [UIImage imageNamed:@"1.png"];
+    aImageView.image = [UIImage imageNamed:@"1.jpg"];
     [vc.view addSubview:aImageView];
-    [self.navigationController pushPortalTransitionViewController:vc completion:nil];
-    //[self.navigationController pushViewController:vc animated:YES];
+    //[self.navigationController pushPortalTransitionViewController:vc completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
