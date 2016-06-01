@@ -32,6 +32,18 @@
     return self.privateViewControllersDictionary[key];
 }
 
+- (UIView *)viewForKey:(NSString *)key {
+    UIViewController *viewController = self.privateViewControllersDictionary[key];
+    if (viewController) {
+        return viewController.view;
+    }
+    return nil;
+}
+
+- (CGAffineTransform)targetTransform {
+    return CGAffineTransformIdentity;
+}
+
 -(void)completeTransition:(BOOL)didComplete{
     if (self.completionBlock) {
         self.completionBlock(didComplete);
